@@ -9,6 +9,7 @@ import project6 from './project6.jpg'
 import project7 from './project7.jpg'
 import project8 from './project8.jpg'
 import project9 from './project9.jpg'
+import aboutHero from './aboutHero.jpg'
 
 
 
@@ -24,7 +25,8 @@ const assets = {
     project6,
     project7,
     project8,
-    project9
+    project9,
+    aboutHero
 }
 
 export default assets
