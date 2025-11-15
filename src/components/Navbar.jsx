@@ -13,19 +13,19 @@ const Navbar = () => {
 
       <nav className='hidden md:flex flex-1 justify-center items-center gap-9 text-[#111418] dark:text-background-light'>
        <Link to="/">
-        <a href="#home" className='text-sm font-medium hover:text-primary dark:hover:text-primary transition-colors'>Home</a>
+        <p className='text-sm font-medium hover:text-primary dark:hover:text-primary transition-colors'>Home</p>
        </Link> 
        <Link to="/about">
-        <a href="#about" className='text-sm font-medium hover:text-primary dark:hover:text-primary transition-colors'>About Us</a>
+        <p className='text-sm font-medium hover:text-primary dark:hover:text-primary transition-colors'>About Us</p>
        </Link>
         <Link to="/programs">
-        <a href="#programs" className='text-sm font-medium hover:text-primary dark:hover:text-primary transition-colors'>Our Work</a>
+        <p className='text-sm font-medium hover:text-primary dark:hover:text-primary transition-colors'>Our Work</p>
         </Link>
         <Link to="/getinvolved">
-        <a href="#contact" className='text-sm font-medium hover:text-primary dark:hover:text-primary transition-colors'>Get Involved</a>    
+        <p className='text-sm font-medium hover:text-primary dark:hover:text-primary transition-colors'>Get Involved</p>    
         </Link>
         <Link to="/contact">
-        <a href="#contact" className='text-sm font-medium hover:text-primary dark:hover:text-primary transition-colors'>Contact Us</a>    
+        <p href="#contact" className='text-sm font-medium hover:text-primary dark:hover:text-primary transition-colors'>Contact Us</p>    
         </Link>
         
       </nav>
@@ -47,23 +47,21 @@ const Navbar = () => {
     <div className={`absolute top-0 left-0 w-full h-screen bg-background-light dark:bg-background-dark transform ${visible ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 ease-in-out`}>
         <nav className='flex flex-col items-center justify-center h-full gap-8 text-[#111418] dark:text-background-light'>
             <Link to="/">
-            <a href="#home" className='text-lg font-medium hover:text-primary dark:hover:text-primary transition-colors' onClick={() => setVisible(false)}>Home</a>
+            <p className='text-lg font-medium hover:text-primary dark:hover:text-primary transition-colors' onClick={() => setVisible(false)}>Home</p>
             </Link>
             <Link to="/about">
-            <a href="#about" className='text-lg font-medium hover:text-primary dark:hover:text-primary transition-colors' onClick={() => setVisible(false)}>About Us</a>
+            <p className='text-lg font-medium hover:text-primary dark:hover:text-primary transition-colors' onClick={() => setVisible(false)}>About Us</p>
             </Link>
             <Link to="/programs">
-            <a href="#programs" className='text-lg font-medium hover:text-primary dark:hover:text-primary transition-colors' onClick={() => setVisible(false)}>Our Work</a>
+            <p className='text-lg font-medium hover:text-primary dark:hover:text-primary transition-colors' onClick={() => setVisible(false)}>Our Work</p>
             </Link>
             <Link to="/getinvolved">
-            <a href="#contact" className='text-lg font-medium hover:text-primary dark:hover:text-primary transition-colors' onClick={() => setVisible(false)}>Get Involved</a>
+            <p className='text-lg font-medium hover:text-primary dark:hover:text-primary transition-colors' onClick={() => setVisible(false)}>Get Involved</p>
             </Link>
             <Link to="/contact">
-            <a href="#contact" className='text-lg font-medium hover:text-primary dark:hover:text-primary transition-colors' onClick={() => setVisible(false)}>Contact Us</a>
-            </Link>
-            
+            <p className='text-lg font-medium hover:text-primary dark:hover:text-primary transition-colors' onClick={() => setVisible(false)}>Contact Us</p>
+            </Link> 
         </nav>
-
     </div>
     </div>
   )

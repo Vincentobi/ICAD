@@ -9,7 +9,16 @@ import project6 from './project6.jpg'
 import project7 from './project7.jpg'
 import project8 from './project8.jpg'
 import project9 from './project9.jpg'
+import project10 from './project10.jpg'
+import project11 from './project11.png'
+import project12 from './project12.jpg'
 import aboutHero from './aboutHero.jpg'
+import kevin from './kevin.jpg'
+import grace from './grace.jpg'
+import uche from './uche.png'
+import beckteck from './beckteck.jpg'
+import mike from './mike.jpg'
+
 
 
 
@@ -26,7 +35,40 @@ const assets = {
     project7,
     project8,
     project9,
-    aboutHero
+    project10,
+    project11,
+    project12,
+    aboutHero,
+    kevin,
+    grace,
+    uche,
+    beckteck,
+    mike
 }
 
 export default assets
+
+export const TEAM = [
+    {
+        image: kevin,
+        role: 'Founder',
+        description: 'Kevin Anthony Nnadi is the founder of the International Center for Accelerated Development (ICAD), where he serves as Secretary of the board of Tustees and as Executive Director, providing leadership and program direction. Kevin has made significant contributions to the humanitarian sector through roles with the International Rescue Committee and the United Nations World Food Program project patners'
+
+    },
+    {
+        image: mike,
+        role: 'Chairman of the board of trustees',
+        description: 'High Chief Anyalewachi Michaels Ikeije (B.Sc, MBA, FCA, FCTI, CFAN, M.Sc), a distinguished professional with extensive expertise in accountancy, finance, and entrepreneurship, serves as the Chairman of the Board of Trustees ICAD.'
+    },
+    {
+        image: beckteck,
+        role: 'Lawyer',
+        description: 'Mrs.Shetak Becklang brings a wealth of experience from her legal background, dedicatiing her career to building capacity staff and volunteers to advocate for human rights within our community. A graduate of Law from the university of Jos, she also holds a Masters Degree in Conflict Management and Peace Studies from thesame institution. Currently, she serves as the Director of legal Drafting with the Plateau State Ministry of Justice and acts as the Secretary of the Plateau State Justice Reform Team.'
+    },
+    {
+        image: grace,
+        role: 'Data specialist/analyst',
+        description: 'Mrs. Grace Ngwu-Nnadi joined the International Center for Accelerated Development (ICAD) as on of the few women with a strong passion for data analytics and monitoring and evaluation. She has shown deep interest in the centers policy direction, particularly in areas that drive health reforms, promote gender equity, and improve information manangemnet for imapctful decision-making.'
+    }
+
+]
