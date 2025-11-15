@@ -23,7 +23,7 @@ import mike from './mike.jpg'
 
 
 
-const assets = {
+export const assets = {
     logo,   
     heroImg,
     project1,
@@ -46,7 +46,7 @@ const assets = {
     mike
 }
 
-export default assets
+
 
 export const TEAM = [
     {
@@ -72,3 +72,6 @@ export const TEAM = [
     }
 
 ]
+
+
+export default assets

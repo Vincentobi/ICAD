@@ -1,6 +1,7 @@
 import React from 'react'
 
-const Team = (image, name, role, description) => {
+
+export default function Team({image, name, role, description}){
   return (
     <div className='flex flex-col items-center text-center'>
       <img className="h-40 w-40 rounded-full object-cover" src={image} alt={name} />
@@ -11,4 +12,4 @@ const Team = (image, name, role, description) => {
   )
 }
 
-export default Team
+

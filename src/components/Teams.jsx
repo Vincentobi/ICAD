@@ -1,6 +1,6 @@
 import React from 'react'
 import Team from '../components/Team'
-import { TEAM } from '../assets/assets'
+import { TEAM } from '../assets/assets.js'
 
 const Teams = () => {
   return (
@@ -10,28 +10,28 @@ const Teams = () => {
 <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 z-999">
 
 <Team 
-  image={TEAM[0].title}
+  image={TEAM[0].image}
   name = 'Kevin Nnadi'
   role={TEAM[0].role}
   description={TEAM[0].description}
 />
 
 <Team 
-  image={TEAM[1].title}
-  name = 'Chief Mike'
+  image={TEAM[1].image}
+  name = 'Chief Mike .A Ikejie'
   role={TEAM[1].role}
   description={TEAM[1].description}
 />
 
 <Team 
-  image={TEAM[2].title}
-  name = 'Beckteck'
+  image={TEAM[2].image}
+  name = 'Beckleng Shitak'
   role={TEAM[2].role}
   description={TEAM[2].description}
 />
 
 <Team 
-  image={TEAM[3].title}
+  image={TEAM[3].image}
   name = 'Grace Nnadi'
   role={TEAM[3].role}
   description={TEAM[3].description}
