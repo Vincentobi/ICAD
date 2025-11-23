@@ -3,6 +3,34 @@ import { React, useState } from 'react'
 const Donate = () => {
 
     const [selectedAmount, setSelectedAmount] = useState(25);
+    const [volunteerData, setVolunteerData] = useState({
+        name: '',
+        email: '',
+        interest: ''
+    });
+
+    const handleVolunteerSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await fetch('http://localhost:5000/volunteer', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(volunteerData),
+            });
+            const data = await response.json();
+            if (data.success) {
+                alert('Thank you for volunteering!');
+                setVolunteerData({ name: '', email: '', interest: '' });
+            } else {
+                alert('Something went wrong. Please try again.');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert('Error submitting form');
+        }
+    };
 
     return (
         <section className="container mx-auto px-4 py-16">
@@ -18,7 +46,7 @@ const Donate = () => {
                         <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-primary/10 text-primary">
                             <span className="material-symbols-outlined text-3xl">
                                 volunteer_activism
-                            </span>               
+                            </span>
                         </div>
                         <h3 className="text-xl font-bold text-slate-900 dark:text-white">Make a Donation</h3>
                         <p className="mt-2 text-slate-600 dark:text-slate-400">Your financial contribution directly funds our key programs, providing essential resources to those in need.</p>
@@ -38,8 +66,8 @@ const Donate = () => {
                             <button
                                 onClick={() => setSelectedAmount(25)}
                                 className={`h-10 rounded-lg border font-semibold transition-colors ${selectedAmount === 25
-                                        ? "bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-sm"
-                                        : "border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300"
+                                    ? "bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-sm"
+                                    : "border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300"
                                     }`}
                             >
                                 $25
@@ -47,8 +75,8 @@ const Donate = () => {
                             <button
                                 onClick={() => setSelectedAmount(50)}
                                 className={`h-10 rounded-lg border font-semibold transition-colors ${selectedAmount === 50
-                                        ? "bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-sm"
-                                        : "border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300"
+                                    ? "bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-sm"
+                                    : "border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300"
                                     }`}
                             >
                                 $50
@@ -56,8 +84,8 @@ const Donate = () => {
                             <button
                                 onClick={() => setSelectedAmount(100)}
                                 className={`h-10 rounded-lg border font-semibold transition-colors ${selectedAmount === 100
-                                        ? "bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-sm"
-                                        : "border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300"
+                                    ? "bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-sm"
+                                    : "border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300"
                                     }`}
                             >
                                 $100
@@ -85,27 +113,54 @@ const Donate = () => {
                         <p className="mt-2 text-slate-600 dark:text-slate-400">Our volunteers are the backbone of our work. Join our dedicated team and contribute your skills to a cause you care about.</p>
                     </div>
                     <div className="bg-background-light dark:bg-background-dark p-6 grow flex flex-col space-y-4">
-                        <div>
-                            <label className="sr-only" htmlFor="volunteer-name">Full Name</label>
-                            <input className="w-full rounded-lg border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 p-2 focus:border-primary focus:ring-primary" id="volunteer-name" name="volunteer-name" placeholder="Full Name" type="text" />
-                        </div>
-                        <div>
-                            <label className="sr-only" htmlFor="volunteer-email">Email Address</label>
-                            <input className="w-full rounded-lg border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 p-2 focus:border-primary focus:ring-primary" id="volunteer-email" name="volunteer-email" placeholder="Email Address" type="email" />
-                        </div>
-                        <div>
-                            <label className="sr-only" htmlFor="interest">Area of Interest</label>
-                            <select className="w-full rounded-lg border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 p-2 focus:border-primary focus:ring-primary text-slate-500" id="interest" name="interest">
-                                <option>Select area of interest</option>
-                                <option>Event Support</option>
-                                <option>Mentoring</option>
-                                <option>Admin &amp; Office Work</option>
-                                <option>Community Outreach</option>
-                            </select>
-                        </div>
-                        <button className="flex w-full mt-auto items-center justify-center rounded-lg h-11 px-5 bg-primary text-white cursor-pointer text-base font-bold hover:bg-primary/90 transition-colors">
-                            <span>Sign Up to Volunteer</span>
-                        </button>
+                        <form onSubmit={handleVolunteerSubmit} className="flex flex-col space-y-4 h-full">
+                            <div>
+                                <label className="sr-only" htmlFor="volunteer-name">Full Name</label>
+                                <input
+                                    className="w-full rounded-lg border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 p-2 focus:border-primary focus:ring-primary"
+                                    id="volunteer-name"
+                                    name="volunteer-name"
+                                    placeholder="Full Name"
+                                    type="text"
+                                    value={volunteerData.name}
+                                    onChange={(e) => setVolunteerData({ ...volunteerData, name: e.target.value })}
+                                    required
+                                />
+                            </div>
+                            <div>
+                                <label className="sr-only" htmlFor="volunteer-email">Email Address</label>
+                                <input
+                                    className="w-full rounded-lg border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 p-2 focus:border-primary focus:ring-primary"
+                                    id="volunteer-email"
+                                    name="volunteer-email"
+                                    placeholder="Email Address"
+                                    type="email"
+                                    value={volunteerData.email}
+                                    onChange={(e) => setVolunteerData({ ...volunteerData, email: e.target.value })}
+                                    required
+                                />
+                            </div>
+                            <div>
+                                <label className="sr-only" htmlFor="interest">Area of Interest</label>
+                                <select
+                                    className="w-full rounded-lg border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 p-2 focus:border-primary focus:ring-primary text-slate-500"
+                                    id="interest"
+                                    name="interest"
+                                    value={volunteerData.interest}
+                                    onChange={(e) => setVolunteerData({ ...volunteerData, interest: e.target.value })}
+                                    required
+                                >
+                                    <option value="">Select area of interest</option>
+                                    <option value="Event Support">Event Support</option>
+                                    <option value="Mentoring">Mentoring</option>
+                                    <option value="Admin & Office Work">Admin & Office Work</option>
+                                    <option value="Community Outreach">Community Outreach</option>
+                                </select>
+                            </div>
+                            <button type="submit" className="flex w-full mt-auto items-center justify-center rounded-lg h-11 px-5 bg-primary text-white cursor-pointer text-base font-bold hover:bg-primary/90 transition-colors">
+                                <span>Sign Up to Volunteer</span>
+                            </button>
+                        </form>
                     </div>
                 </div>
                 {/* Partner Card */}
