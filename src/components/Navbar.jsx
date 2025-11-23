@@ -18,14 +18,14 @@ const Navbar = () => {
        <Link to="/about">
         <p className='text-sm font-medium hover:text-primary dark:hover:text-primary transition-colors'>About Us</p>
        </Link>
-        <Link to="/programs">
+        <Link to="/programs/">
         <p className='text-sm font-medium hover:text-primary dark:hover:text-primary transition-colors'>Our Work</p>
         </Link>
         <Link to="/getinvolved">
         <p className='text-sm font-medium hover:text-primary dark:hover:text-primary transition-colors'>Get Involved</p>    
         </Link>
         <Link to="/contact">
-        <p href="#contact" className='text-sm font-medium hover:text-primary dark:hover:text-primary transition-colors'>Contact Us</p>    
+        <p className='text-sm font-medium hover:text-primary dark:hover:text-primary transition-colors'>Contact Us</p>    
         </Link>
         
       </nav>
@@ -52,7 +52,7 @@ const Navbar = () => {
             <Link to="/about">
             <p className='text-lg font-medium hover:text-primary dark:hover:text-primary transition-colors' onClick={() => setVisible(false)}>About Us</p>
             </Link>
-            <Link to="/programs">
+            <Link to="/programs/">
             <p className='text-lg font-medium hover:text-primary dark:hover:text-primary transition-colors' onClick={() => setVisible(false)}>Our Work</p>
             </Link>
             <Link to="/getinvolved">

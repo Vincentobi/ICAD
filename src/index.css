@@ -26,8 +26,17 @@
   --radius-full: 9999px;
 }
 
+  body {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
 .hero {
   background-image: linear-gradient(rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.6) 100%), url(./assets/heroImg.jpg);
+}
+
+.hero2 {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.6) 100%), url(./assets/project7.jpg);
 }
 
 .about-hero {
@@ -65,4 +74,9 @@
         }
         .dark .timeline-dot {
             border-color: #101922;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            font-size: 20px;
         }

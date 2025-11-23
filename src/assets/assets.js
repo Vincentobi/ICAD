@@ -12,6 +12,19 @@ import project9 from './project9.jpg'
 import project10 from './project10.jpg'
 import project11 from './project11.png'
 import project12 from './project12.jpg'
+import project13 from './project13.jpg'
+import project14 from './project14.jpg'
+import project15 from './project15.jpg'
+import project16 from './project16.png'
+import project17 from './project17.jpg'
+import project18 from './project18.jpg'
+import project19 from './project19.jpg'
+import project20 from './project20.jpg'
+import project21 from './project21.jpg'
+import project22 from './project22.png'
+import project23 from './project23.png'
+import project24 from './project24.png'
+import project25 from './project25.jpg'
 import aboutHero from './aboutHero.jpg'
 import kevin from './kevin.jpg'
 import grace from './grace.jpg'
@@ -38,6 +51,19 @@ export const assets = {
     project10,
     project11,
     project12,
+    project13,
+    project14,
+    project15,
+    project16,
+    project17,
+    project18,
+    project19,
+    project20,
+    project21,
+    project22,
+    project23,
+    project24,
+    project25,
     aboutHero,
     kevin,
     grace,
@@ -75,3 +101,56 @@ export const TEAM = [
 
 
 export default assets
+
+
+export const PROJECTS = [
+    {
+        id: "education",
+        title: "Educatiing students on gender equality through innovation/technology",
+        shortDescription: "Educatiing students on gender equality through innovation/technology.",
+        longDescription: "ICAD in patnership went to several schools around Nigeria, educating on girl child equality and how this could be achieved through innovation and technology ",
+        thumbnail: project25,
+        images: project25
+    },
+    {
+        id: "education",
+        title: "Educatiing students on gender equality through innovation/technology",
+        shortDescription: "Educatiing students on gender equality through innovation/technology.",
+        longDescription: "ICAD in patnership went to several schools around Nigeria, educating on girl child equality and how this could be achieved through innovation and technology ",
+        thumbnail: project25,
+        images: project25
+    },
+    {
+        id: "healthCare",
+        title: "Educatiing students on gender equality through innovation/technology",
+        shortDescription: "Educatiing students on gender equality through innovation/technology.",
+        longDescription: "ICAD in patnership went to several schools around Nigeria, educating on girl child equality and how this could be achieved through innovation and technology ",
+        thumbnail: project25,
+        images: project25
+    },
+    {
+        id: "healthCare",
+        title: "Educatiing students on gender equality through innovation/technology",
+        shortDescription: "Educatiing students on gender equality through innovation/technology.",
+        longDescription: "ICAD in patnership went to several schools around Nigeria, educating on girl child equality and how this could be achieved through innovation and technology ",
+        thumbnail: project25,
+        images: project25
+    },
+    {
+        id: "enviroment",
+        title: "Educatiing students on gender equality through innovation/technology",
+        shortDescription: "Educatiing students on gender equality through innovation/technology.",
+        longDescription: "ICAD in patnership went to several schools around Nigeria, educating on girl child equality and how this could be achieved through innovation and technology ",
+        thumbnail: project25,
+        images: project25
+    },
+    {
+        id: "enviroment",
+        title: "Educatiing students on gender equality through innovation/technology",
+        shortDescription: "Educatiing students on gender equality through innovation/technology.",
+        longDescription: "ICAD in patnership went to several schools around Nigeria, educating on girl child equality and how this could be achieved through innovation and technology ",
+        thumbnail: project25,
+        images: project25
+    }
+    
+]
