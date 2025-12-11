@@ -38,7 +38,7 @@ const filtered =
         {filtered.map(PROJECTS => (
           <div
             key={PROJECTS.id}
-            className="rounded-xl shadow bg-white overflow-hidden"
+            className="rounded-xl shadow bg-white overflow-hidden text-gray-500 dark:text-gray-400"
           >
             <img
               src={PROJECTS.thumbnail}

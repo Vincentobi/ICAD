@@ -8,8 +8,8 @@ const Programs = () => {
   return (
 
       <Routes>
-        <Route path="/projects/*" element={<Projects />} />
-        <Route path="/projects/*/:id" element={<ProjectDetails />} />
+        <Route path="/" element={<Projects />} />
+        <Route path="/:id" element={<ProjectDetails />} />
       </Routes>
    
   );
