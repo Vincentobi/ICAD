@@ -31,7 +31,7 @@ const Navbar = () => {
       </nav>
 
       <button className='flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-primary/90 transition-colors'>
-        <span href='#' className='truncate'>Donate</span>
+        <a href='/getinvolved#donate' className='truncate'>Donate</a>
       </button>
 
         <div className='md:hidden flex items-center'>

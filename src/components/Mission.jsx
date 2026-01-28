@@ -2,7 +2,7 @@ import React from 'react'
 
 const Mission = () => {
   return (
-    <section className="py-16 sm:py-24">
+    <section id='mission' className="py-16 sm:py-24">
 <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
 <h2 className="text-text-light dark:text-text-dark text-3xl font-bold leading-tight tracking-[-0.015em] text-center">Our Mission &amp; Vision</h2>
 <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">

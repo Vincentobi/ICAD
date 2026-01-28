@@ -25,6 +25,11 @@ import project22 from './project22.png'
 import project23 from './project23.png'
 import project24 from './project24.png'
 import project25 from './project25.jpg'
+import project26 from './project26.jpg'
+import project27 from './project27.jpg'
+import project28 from './project28.jpg'
+import project29 from './project29.jpg'
+import project30 from './project30.jpg'
 import aboutHero from './aboutHero.jpg'
 import kevin from './kevin.jpg'
 import grace from './grace.jpg'
@@ -37,7 +42,7 @@ import mike from './mike.jpg'
 
 
 export const assets = {
-    logo,   
+    logo,
     heroImg,
     project1,
     project2,
@@ -64,6 +69,11 @@ export const assets = {
     project23,
     project24,
     project25,
+    project26,
+    project27,
+    project28,
+    project29,
+    project30,
     aboutHero,
     kevin,
     grace,
@@ -106,27 +116,30 @@ export default assets
 export const PROJECTS = [
     {
         id: "education",
-        title: "Educatiing students on gender equality through innovation/technology",
-        shortDescription: "Educatiing students on gender equality through innovation/technology.",
+        category: "Education",
+        title: "Educating students on gender equality through innovation/technology",
+        shortDescription: "Educating students on gender equality through innovation/technology.",
         longDescription: "ICAD in patnership went to several schools around Nigeria, educating on girl child equality and how this could be achieved through innovation and technology ",
         thumbnail: project25,
         images: project25
     },
     {
         id: "healthCare",
-        title: "Educatiing students on gender equality through innovation/technology",
-        shortDescription: "Educatiing students on gender equality through innovation/technology.",
+        category: "Healthcare",
+        title: "Trainig community women on the human body and hygiene",
+        shortDescription: "Trainig community women on the human body and hygiene.",
         longDescription: "ICAD in patnership went to several schools around Nigeria, educating on girl child equality and how this could be achieved through innovation and technology ",
-        thumbnail: project25,
-        images: project25
+        thumbnail: project29,
+        images: project29
     },
     {
-        id: "enviroment",
-        title: "Educatiing students on gender equality through innovation/technology",
-        shortDescription: "Educatiing students on gender equality through innovation/technology.",
-        longDescription: "ICAD in patnership went to several schools around Nigeria, educating on girl child equality and how this could be achieved through innovation and technology ",
-        thumbnail: project25,
-        images: project25
+        id: "environment",
+        category: "Environment",
+        title: "Carrying out P4P projects",
+        shortDescription: "Carrying out P4P projects.",
+        longDescription: "ICAD in patnership went to several communities around Nigeria, which did they  ",
+        thumbnail: project4,
+        images: project4
     },
-    
+
 ]

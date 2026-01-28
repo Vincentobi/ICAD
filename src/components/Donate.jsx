@@ -1,7 +1,32 @@
 import React, { useState } from 'react'
+import { usePaystackPayment } from 'react-paystack';
+import IconMapper from './IconMapper'
 
 const Donate = () => {
     const [selectedAmount, setSelectedAmount] = useState(25);
+    const [customAmount, setCustomAmount] = useState('');
+    const [donorEmail, setDonorEmail] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
+
+    const config = {
+        reference: (new Date()).getTime().toString(),
+        email: donorEmail,
+        amount: ((customAmount ? parseFloat(customAmount) : selectedAmount) * 100), // Paystack expects amount in kobo
+        publicKey: import.meta.env.VITE_PAYSTACK_PUBLIC_KEY,
+    };
+
+    const onSuccess = (reference) => {
+        alert("Thanks for your donation! Reference: " + reference.reference);
+        setCustomAmount('');
+        setDonorEmail('');
+    };
+
+    const onClose = () => {
+        console.log('Payment closed');
+    }
+
+    const initializePayment = usePaystackPayment(config);
+
     const [volunteerData, setVolunteerData] = useState({
         name: '',
         email: '',
@@ -10,6 +35,7 @@ const Donate = () => {
 
     const handleVolunteerSubmit = async (e) => {
         e.preventDefault();
+        setIsLoading(true);
         try {
             const response = await fetch('http://localhost:5000/volunteer', {
                 method: 'POST',
@@ -28,6 +54,8 @@ const Donate = () => {
         } catch (error) {
             console.error('Error submitting volunteer form:', error);
             alert('Error submitting form');
+        } finally {
+            setIsLoading(false);
         }
     };
 
@@ -42,11 +70,9 @@ const Donate = () => {
                 <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
                     {/* <!-- Donate Card --> */}
                     <div className="flex flex-col rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 shadow-sm overflow-hidden">
-                        <div className="p-6 flex flex-col items-center text-center">
+                        <div id='donate' className="p-6 flex flex-col items-center text-center">
                             <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-primary/10 text-primary">
-                                <span className="material-symbols-outlined text-3xl">
-                                    volunteer_activism
-                                </span>
+                                <IconMapper iconName="volunteer_activism" className="text-3xl" />
                             </div>
                             <h3 className="text-xl font-bold text-slate-900 dark:text-white">Make a Donation</h3>
                             <p className="mt-2 text-slate-600 dark:text-slate-400">Your financial contribution directly funds our key programs, providing essential resources to those in need.</p>
@@ -64,41 +90,74 @@ const Donate = () => {
                             </div>
                             <div className="grid grid-cols-3 gap-2">
                                 <button
-                                    onClick={() => setSelectedAmount(25)}
-                                    className={`h-10 rounded-lg border font-semibold transition-colors ${selectedAmount === 25
+                                    onClick={() => { setSelectedAmount(25000); setCustomAmount(''); }}
+                                    className={`h-10 rounded-lg border font-semibold transition-colors ${selectedAmount === 25000
+
                                         ? "bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-sm"
                                         : "border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300"
                                         }`}
                                 >
-                                    $25
+                                    ₦25,000
                                 </button>
                                 <button
-                                    onClick={() => setSelectedAmount(50)}
-                                    className={`h-10 rounded-lg border font-semibold transition-colors ${selectedAmount === 50
+                                    onClick={() => { setSelectedAmount(50000); setCustomAmount(''); }}
+                                    className={`h-10 rounded-lg border font-semibold transition-colors ${selectedAmount === 50000
                                         ? "bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-sm"
                                         : "border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300"
                                         }`}
                                 >
-                                    $50
+                                    ₦50,000
                                 </button>
                                 <button
-                                    onClick={() => setSelectedAmount(100)}
-                                    className={`h-10 rounded-lg border font-semibold transition-colors ${selectedAmount === 100
+                                    onClick={() => { setSelectedAmount(100000); setCustomAmount(''); }}
+                                    className={`h-10 rounded-lg border font-semibold transition-colors ${selectedAmount === 100000
                                         ? "bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-sm"
                                         : "border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300"
                                         }`}
                                 >
-                                    $100
+                                    ₦100,000
                                 </button>
                             </div>
                             <div>
                                 <label className="sr-only" htmlFor="custom-amount">Custom Amount</label>
                                 <div className="relative">
-                                    <span className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-slate-500">$</span>
-                                    <input className="w-full rounded-lg border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 pl-7 pr-4 py-2 focus:border-primary focus:ring-primary" id="custom-amount" name="custom-amount" placeholder="Custom Amount" type="number" />
+                                    <span className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-slate-500">₦</span>
+                                    <input
+                                        className="w-full rounded-lg border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 pl-7 pr-4 py-2 focus:border-primary focus:ring-primary"
+                                        id="custom-amount"
+                                        name="custom-amount"
+                                        placeholder="Custom Amount"
+                                        type="number"
+                                        value={customAmount}
+                                        onChange={(e) => {
+                                            setCustomAmount(e.target.value);
+                                            if (e.target.value) setSelectedAmount(0);
+                                        }}
+                                    />
                                 </div>
                             </div>
-                            <button className="flex w-full items-center justify-center rounded-lg h-11 px-5 bg-primary text-white text-base cursor-pointer font-bold hover:bg-primary/90 transition-colors">
+                            <div className="w-full">
+                                <label className="sr-only" htmlFor="donor-email">Email Address</label>
+                                <input
+                                    className="w-full rounded-lg border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 px-4 py-2 focus:border-primary focus:ring-primary"
+                                    id="donor-email"
+                                    name="donor-email"
+                                    placeholder="Email Address"
+                                    type="email"
+                                    value={donorEmail}
+                                    onChange={(e) => setDonorEmail(e.target.value)}
+                                    required
+                                />
+                            </div>
+                            <button
+                                onClick={() => {
+                                    if (!donorEmail) {
+                                        alert('Please enter your email address');
+                                        return;
+                                    }
+                                    initializePayment(onSuccess, onClose);
+                                }}
+                                className="flex w-full items-center justify-center rounded-lg h-11 px-5 bg-primary text-white text-base cursor-pointer font-bold hover:bg-primary/90 transition-colors">
                                 <span>Donate Now</span>
                             </button>
                         </div>
@@ -107,7 +166,7 @@ const Donate = () => {
                     <div className="flex flex-col rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 shadow-sm overflow-hidden">
                         <div className="p-6 flex flex-col items-center text-center">
                             <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-primary/10 text-primary">
-                                <span className="material-symbols-outlined text-3xl">diversity_3</span>
+                                <IconMapper iconName="diversity_3" className="text-3xl" />
                             </div>
                             <h3 className="text-xl font-bold text-slate-900 dark:text-white">Lend Your Time</h3>
                             <p className="mt-2 text-slate-600 dark:text-slate-400">Our volunteers are the backbone of our work. Join our dedicated team and contribute your skills to a cause you care about.</p>
@@ -153,12 +212,16 @@ const Donate = () => {
                                         <option value="">Select area of interest</option>
                                         <option value="Event Support">Event Support</option>
                                         <option value="Mentoring">Mentoring</option>
-                                        <option value="Admin & Office Work">Admin & Office Work</option>
+                                        <option value="Admin & Office Work">Admin &Office Work</option>
                                         <option value="Community Outreach">Community Outreach</option>
                                     </select>
                                 </div>
-                                <button type="submit" className="flex w-full mt-auto items-center justify-center rounded-lg h-11 px-5 bg-primary text-white cursor-pointer text-base font-bold hover:bg-primary/90 transition-colors">
-                                    <span>Sign Up to Volunteer</span>
+                                <button
+                                    type="submit"
+                                    disabled={isLoading}
+                                    className="flex w-full mt-auto items-center justify-center rounded-lg h-11 px-5 bg-primary text-white cursor-pointer text-base font-bold hover:bg-primary/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                                >
+                                    <span>{isLoading ? 'Signing Up...' : 'Sign Up to Volunteer'}</span>
                                 </button>
                             </form>
                         </div>
@@ -167,7 +230,7 @@ const Donate = () => {
                     <div className="flex flex-col rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 shadow-sm overflow-hidden">
                         <div className="p-6 flex flex-col items-center text-center">
                             <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-primary/10 text-primary">
-                                <span className="material-symbols-outlined text-3xl">handshake</span>
+                                <IconMapper iconName="handshake" className="text-3xl" />
                             </div>
                             <h3 className="text-xl font-bold text-slate-900 dark:text-white">Become a Partner</h3>
                             <p className="mt-2 text-slate-600 dark:text-slate-400">Corporate partnerships provide vital support and demonstrate your company's commitment to social responsibility.</p>
