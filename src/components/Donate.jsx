@@ -37,7 +37,7 @@ const Donate = () => {
         e.preventDefault();
         setIsLoading(true);
         try {
-            const response = await fetch('http://localhost:5000/volunteer', {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/volunteer`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
